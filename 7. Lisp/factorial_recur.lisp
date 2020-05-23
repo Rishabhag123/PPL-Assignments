@@ -1,10 +1,10 @@
 ;factorial of a number with recursion
 
 (defun factorial (n)
-   (cond 
+	(cond 
 		((zerop n) 1)
-    	(t ( * n (factorial (- n 1))))
-   )
+    		(t ( * n (factorial (- n 1))))
+   	)
 )
 (write-line "Enter a number : ")
 (setf num (read))
