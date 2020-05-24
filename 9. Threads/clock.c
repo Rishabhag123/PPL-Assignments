@@ -6,16 +6,12 @@
 #include <unistd.h>
 int hour, minute, second;
 
-pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
-
 void *secondFun(void *vargs){
 	while(1){
-		pthread_mutex_lock(&lock);
 		if(second != 60){
 			sleep(1);
 			second++;
 		}
-		pthread_mutex_unlock(&lock);
 	}
 	return NULL;
 }
