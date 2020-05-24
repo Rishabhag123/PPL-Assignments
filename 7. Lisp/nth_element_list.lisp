@@ -5,4 +5,4 @@
 (write-line "Enter index : ")
 (setf index (read))
 (setf res (nth index l))
-(format t "Element at position ~d : ~d" num res)
+(format t "Element at position ~d : ~d" index res)
