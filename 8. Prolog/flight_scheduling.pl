@@ -23,17 +23,17 @@ myflight(paris, united, toulouse, 35, 120).
 
 flight(S, A, D, P, T) :- myflight(S, A, D, P, T) ; myflight(D, A, S, P, T).
 
-# checks if a flight exists from city A to city B
-isflight(S, D) :- (myflight(S, _, D, _, _) ; myflight(D, _, S, _, _) )-> write('There is a flight. ') ; write('There is no flight. '). 
+% checks if a flight exists from city A to city B
+isflight(S, D) :- (myflight(S, _, D, _, _) ; myflight(D, _, S, _, _) ). 
 
-# checks if a flight from city A to city B with airline C is cheap
-ischeap(S, D, A) :- ( ( myflight(S, A, D, P, _) ; myflight(D, A, S, P, _) ) , P < 400 ) -> write('Flight is cheap. ') ; write('Flight is not cheap. ').
+% checks if a flight from city A to city B with airline C is cheap
+ischeap(S, D, A) :- ( ( myflight(S, A, D, P, _) ; myflight(D, A, S, P, _) ) , P < 400 ).
 
-# checks if it is possible to travel from city A to city B with two flights
+% checks if it is possible to travel from city A to city B with two flights
 istwoflights(S, D) :- ( isflight(S, X) , isflight(X, D) ) -> write('It is possible. ') ; write('It is not possible').
 
-# checks if a flight from city A to city B with airline C is preferred
+% checks if a flight from city A to city B with airline C is preferred
 ispreferred(S, D, A) :- ( ischeap(S, D, A) ; ( (myflight(S, A, D, _, _) ; myflight(D, A, S, _, _)) , A = aircanada ) ) -> write('The flight is preferred. ') ; write('Flight is not preferred. ').
 
-# checks that there is a flight from city A to city B with Air Canada if there is a flight from A to B with United
+% checks that there is a flight from city A to city B with Air Canada if there is a flight from A to B with United
 flight_aircanada(S, D) :- myflight(S, united, D, _, _) ; myflight(D, united, S, _, _).
